@@ -22,7 +22,7 @@ public class ButtonAppearEventListener extends ListenerAdapter implements Privat
 
     @Override
     public void onButtonInteraction(ButtonInteractionEvent event) {
-        if (event.getComponentId().equals("hello")) {
+        if (event.getComponentId().equals("Создать группу!")) {
             sendPrivateMessage(event.getUser(), "You pushed button!");
         }
     }
