@@ -1,14 +1,14 @@
 package ru.com.cair.event;
 
-import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.components.ActionRow;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
-import net.dv8tion.jda.internal.entities.channel.concrete.PrivateChannelImpl;
-import ru.com.cair.cache.UserCacheHolder;
-import ru.com.cair.enums.RegistrationStep;
+import net.dv8tion.jda.api.interactions.components.text.TextInput;
+import net.dv8tion.jda.api.interactions.components.text.TextInputStyle;
+import net.dv8tion.jda.api.interactions.modals.Modal;
+import ru.com.cair.util.Constants;
 
 public class ButtonAppearEventListener extends ListenerAdapter implements PrivateMessageReply {
 
@@ -18,12 +18,25 @@ public class ButtonAppearEventListener extends ListenerAdapter implements Privat
             event.reply("Click the button to say hello")
                     .addActionRow(Button.primary("hello", "Click Me")).queue();
         }
+        if (event.getName().equals("test")) {
+            System.out.println("test");
+//            event.reply("Click the button to say hello")
+//                    .addActionRow(Button.primary("hello", "Click Me")).queue();
+        }
     }
 
     @Override
     public void onButtonInteraction(ButtonInteractionEvent event) {
-        if (event.getComponentId().equals("Создать группу!")) {
-            sendPrivateMessage(event.getUser(), "You pushed button!");
-        }
+//        sendPrivateMessage(event.getUser(), "You pushed button!");
+
+        TextInput subject = TextInput.create("subject", "Subject", TextInputStyle.SHORT)
+                .setPlaceholder("Subject of this ticket")
+                .setMinLength(1)
+                .setMaxLength(100) // or setRequiredRange(10, 100)
+                .build();
+        Modal modal = Modal.create(Constants.CREATE_GROUP_MODAL_ID, "Test")
+                .addComponents(ActionRow.of(subject))
+                .build();
+        event.replyModal(modal).queue();
     }
 }
