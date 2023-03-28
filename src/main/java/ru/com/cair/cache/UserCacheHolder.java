@@ -11,5 +11,5 @@ import java.util.Map;
 
 public class UserCacheHolder {
 
-    public static Map<String, RegistrationStep> cacheList = new HashMap<>();
+    public static Map<String, StudentCache> cacheList = new HashMap<>();
 }

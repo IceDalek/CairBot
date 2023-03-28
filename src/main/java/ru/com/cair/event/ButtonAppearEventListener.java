@@ -8,8 +8,10 @@ import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import net.dv8tion.jda.api.interactions.components.text.TextInput;
 import net.dv8tion.jda.api.interactions.components.text.TextInputStyle;
 import net.dv8tion.jda.api.interactions.modals.Modal;
+import org.springframework.stereotype.Component;
 import ru.com.cair.util.Constants;
 
+@Component
 public class ButtonAppearEventListener extends ListenerAdapter implements PrivateMessageReply {
 
     @Override

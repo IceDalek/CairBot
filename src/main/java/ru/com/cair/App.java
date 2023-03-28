@@ -18,24 +18,6 @@ import ru.com.cair.event.ModalInputEventListener;
 public class App {
 
     public static void main(String[] args) {
-        String token = "MTA4MjM2MjgzOTk2MTk3Mjc0Ng.GfthWH.fCKNVcaRFvKOataTefHZBHuDWe1VXDzsEHvJnQ";
-        JDABuilder builder = JDABuilder.createDefault(token);
-        builder.disableCache(CacheFlag.MEMBER_OVERRIDES, CacheFlag.VOICE_STATE);
-        builder.setActivity(Activity.listening("Тишину"));
-        builder.enableIntents(GatewayIntent.MESSAGE_CONTENT);
-        builder.addEventListeners(new MainEventListener());
-        builder.addEventListeners(new ButtonAppearEventListener());
-        builder.addEventListeners(new ModalInputEventListener());
-        JDA jda = builder.build();
-//        jda.updateCommands().addCommands(
-//                Commands.slash("init", "creates button")
-//                        .addOption(OptionType.STRING, "message", "The message to repeat.", false)).queue();
-        jda.updateCommands().addCommands(
-                Commands.slash("test", "creates button").addOption(OptionType.STRING,
-                        "message", "The message to repeat.", false)).queue();
-        jda.updateCommands().addCommands(
-                Commands.slash("init", "creates button").addOption(OptionType.STRING,
-                        "message", "The message to repeat.", false)).queue();
-       // SpringApplication.run(App.class);
+       SpringApplication.run(App.class);
     }
 }

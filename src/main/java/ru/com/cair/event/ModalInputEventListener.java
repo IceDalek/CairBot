@@ -6,11 +6,13 @@ import net.dv8tion.jda.api.entities.channel.concrete.*;
 import net.dv8tion.jda.api.entities.channel.middleman.GuildChannel;
 import net.dv8tion.jda.api.events.interaction.ModalInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import org.springframework.stereotype.Component;
 import ru.com.cair.util.Constants;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+@Component
 public class ModalInputEventListener extends ListenerAdapter {
 
     private void createCategories(Guild guild, String groupName) throws ExecutionException, InterruptedException {
