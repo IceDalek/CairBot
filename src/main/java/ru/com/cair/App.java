@@ -8,14 +8,17 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ru.com.cair.event.ButtonAppearEventListener;
 import ru.com.cair.event.MainEventListener;
 import ru.com.cair.event.ModalInputEventListener;
 
+@SpringBootApplication
 public class App {
 
     public static void main(String[] args) {
-        String token = "";
+        String token = "MTA4MjM2MjgzOTk2MTk3Mjc0Ng.GfthWH.fCKNVcaRFvKOataTefHZBHuDWe1VXDzsEHvJnQ";
         JDABuilder builder = JDABuilder.createDefault(token);
         builder.disableCache(CacheFlag.MEMBER_OVERRIDES, CacheFlag.VOICE_STATE);
         builder.setActivity(Activity.listening("Тишину"));
@@ -24,13 +27,15 @@ public class App {
         builder.addEventListeners(new ButtonAppearEventListener());
         builder.addEventListeners(new ModalInputEventListener());
         JDA jda = builder.build();
-        jda.updateCommands().addCommands(
-                Commands.slash("init", "creates button")
-                        .addOption(OptionType.STRING, "message", "The message to repeat.", false)).queue();
+//        jda.updateCommands().addCommands(
+//                Commands.slash("init", "creates button")
+//                        .addOption(OptionType.STRING, "message", "The message to repeat.", false)).queue();
         jda.updateCommands().addCommands(
                 Commands.slash("test", "creates button").addOption(OptionType.STRING,
                         "message", "The message to repeat.", false)).queue();
-
-
+        jda.updateCommands().addCommands(
+                Commands.slash("init", "creates button").addOption(OptionType.STRING,
+                        "message", "The message to repeat.", false)).queue();
+       // SpringApplication.run(App.class);
     }
 }
